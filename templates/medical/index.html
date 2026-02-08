@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해맑은내과 | 진료안내 · 예약</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="site-title">해맑은내과</a>
+      <nav class="nav">
+        <a href="#departments">진료과</a>
+        <a href="#hours">진료시간</a>
+        <a href="#staff">의료진</a>
+        <a href="#location">오시는 길</a>
+        <a href="#contact" class="btn btn--small">예약문의</a>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기"></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <p class="hero-tagline">건강한 내일을 위한 첫 걸음</p>
+        <h1>해맑은내과</h1>
+        <p class="hero-desc">정확한 진단과 따뜻한 설명으로 함께합니다.</p>
+        <a href="#contact" class="btn">예약하기</a>
+      </div>
+    </section>
+
+    <section id="departments" class="section">
+      <div class="container">
+        <h2 class="section-title">진료과 안내</h2>
+        <div class="dept-grid">
+          <article class="dept-card">
+            <span class="dept-icon">🫀</span>
+            <h3>순환기내과</h3>
+            <p>고혈압, 심부전, 부정맥 등</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-icon">🫁</span>
+            <h3>호흡기내과</h3>
+            <p>기침, 천식, COPD 등</p>
+          </article>
+          <article class="dept-card">
+            <span class="dept-icon">🩺</span>
+            <h3>일반내과</h3>
+            <p>감기, 당뇨, 갑상선 등</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hours" class="section section--alt">
+      <div class="container">
+        <h2 class="section-title">진료시간</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>평일</td><td>09:00 – 18:00</td></tr>
+            <tr><td>토요일</td><td>09:00 – 13:00</td></tr>
+            <tr><td>점심시간</td><td>12:30 – 14:00</td></tr>
+            <tr><td>일·공휴일</td><td>휴진</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="staff" class="section">
+      <div class="container">
+        <h2 class="section-title">의료진 소개</h2>
+        <div class="staff-grid">
+          <article class="staff-card">
+            <div class="staff-photo"></div>
+            <h3>홍길동 원장</h3>
+            <p>순환기내과 전문의 · OO대 의대 졸</p>
+          </article>
+          <article class="staff-card">
+            <div class="staff-photo"></div>
+            <h3>김영희 원장</h3>
+            <p>호흡기내과 전문의 · OO대 의대 졸</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="location" class="section section--alt">
+      <div class="container">
+        <h2 class="section-title">오시는 길</h2>
+        <p class="location-address">서울시 OO구 OO로 456 해맑은빌딩 2층</p>
+        <p class="location-note">지하철 OO역 3번 출구 도보 5분 · 주차 가능</p>
+        <div class="map-placeholder">지도 영역 (카카오/네이버 맵 API 연동)</div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container contact-inner">
+        <h2 class="section-title">예약 및 문의</h2>
+        <p><strong>전화</strong> 02-2345-6789</p>
+        <p><strong>팩스</strong> 02-2345-6790</p>
+        <p>진료 예약은 전화로 부탁드립니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 해맑은내과. 의료법인 OO.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카페 모리 | 커피 & 브런치</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Outfit:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#" class="site-title">카페 모리</a>
+      <nav class="nav">
+        <a href="#about">소개</a>
+        <a href="#menu">메뉴</a>
+        <a href="#hours">영업시간</a>
+        <a href="#contact">연락처</a>
+      </nav>
+      <button class="nav-toggle" aria-label="메뉴 열기"></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-tagline">한 잔의 여유</p>
+        <h1>카페 모리</h1>
+        <p class="hero-desc">정성으로 내린 커피와 브런치</p>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title">소개</h2>
+        <p class="about-text">
+          동네 골목에서 10년째 한 자리를 지켜온 카페 모리입니다. 
+          로스팅부터 추출까지 직접 관리하는 커피와 아침부터 즐기는 브런치를 만나보세요.
+        </p>
+      </div>
+    </section>
+
+    <section id="menu" class="section section--alt">
+      <div class="container">
+        <h2 class="section-title">메뉴</h2>
+        <div class="menu-grid">
+          <article class="menu-card">
+            <h3>커피</h3>
+            <ul>
+              <li>아메리카노 <span>4,500</span></li>
+              <li>카페라떼 <span>5,000</span></li>
+              <li>바닐라라떼 <span>5,500</span></li>
+              <li>콜드브루 <span>5,000</span></li>
+            </ul>
+          </article>
+          <article class="menu-card">
+            <h3>브런치</h3>
+            <ul>
+              <li>에그베네딕트 <span>14,000</span></li>
+              <li>아보카도토스트 <span>12,000</span></li>
+              <li>그랜올라볼 <span>10,000</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="hours" class="section">
+      <div class="container">
+        <h2 class="section-title">영업시간</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>월–금</td><td>08:00 – 20:00</td></tr>
+            <tr><td>토·일</td><td>09:00 – 21:00</td></tr>
+            <tr><td>공휴일</td><td>10:00 – 18:00</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="contact" class="section section--alt">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">연락처</h2>
+          <p><strong>주소</strong> 서울시 OO구 OO로 123 1층</p>
+          <p><strong>전화</strong> 02-1234-5678</p>
+          <p><strong>인스타</strong> @cafe_mori</p>
+        </div>
+        <div class="cta-box">
+          <p>단체 예약·케이크 주문은 전화로 문의해 주세요.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 카페 모리. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
