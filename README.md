@@ -14,6 +14,11 @@
 | 이커머스/소매 | `templates/ecommerce` | 상품 목록, 장바구니 연동 구조 |
 | 에이전시/포트폴리오 | `templates/agency` | 워크 소개, 서비스, 연락처 |
 
+## 자동 배포 (Cloudflare Pages)
+
+`main` 브랜치에 push 하면 GitHub Actions가 Cloudflare Pages에 자동 배포합니다.  
+**최초 1회**: GitHub 저장소 **Settings → Secrets and variables → Actions** 에서 `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID` 를 추가해 주세요. 자세한 방법은 [docs/DEPLOY.md](docs/DEPLOY.md) 참고.
+
 ## 사용 방법
 
 1. 원하는 업종의 `templates/[업종명]` 폴더를 복사합니다.
