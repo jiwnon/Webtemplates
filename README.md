@@ -30,6 +30,7 @@
 - **HTML5** 시맨틱 마크업
 - **CSS3** (Flexbox/Grid, 반응형)
 - **Vanilla JavaScript** (필요 시)
+- **Cloudflare D1** (선택) 문의/예약 저장용 DB · [docs/DATABASE.md](docs/DATABASE.md) 참고
 
 추가 기능(폼 전송, CMS 연동 등)은 프로젝트별로 확장 가능합니다.
 

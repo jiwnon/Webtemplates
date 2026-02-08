@@ -1,0 +1,12 @@
+# Cloudflare Pages + D1 로컬 개발·마이그레이션용
+# Pages 배포는 GitHub Actions 사용. D1 바인딩은 대시보드에서 연결.
+
+name = "webtemplates"
+compatibility_date = "2024-01-01"
+
+# D1 데이터베이스 (생성 후 database_id 를 여기 넣으세요)
+# 생성: wrangler d1 create webtemplates-db
+[[d1_databases]]
+binding = "DB"
+database_name = "webtemplates-db"
+database_id = ""  # wrangler d1 create 실행 후 출력되는 id 입력
