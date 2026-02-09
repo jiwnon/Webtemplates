@@ -15,6 +15,7 @@
 | 의료/클리닉 | `templates/medical` | 진료과, 예약, 오시는 길 |
 | 법률사무소 | `templates/law` | 전문분야, 변호사 소개, 상담 문의 |
 | 부동산 | `templates/real-estate` | 매물 갤러리, 지역, 문의 |
+| 학원 | `templates/academy` | 강사 프로필, 시간표·수강료, 수강 신청 폼, 학부모 후기, 네이버 예약·카카오톡 |
 | 이커머스/소매 | `templates/ecommerce` | 상품 목록, 장바구니 연동 구조 |
 | 에이전시/포트폴리오 | `templates/agency` | 워크 소개, 서비스, 연락처 |
 
