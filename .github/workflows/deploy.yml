@@ -7,13 +7,21 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=webtemplates
+          command: pages deploy ./ --project-name=webtemplates
+
+      - name: Deployment URL
+        if: success()
+        run: echo "Deployed to ${{ steps.deploy.outputs.deployment-url }}"
