@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>행복나눔 푸드뱅크 | 나눔으로 만드는 따뜻한 세상</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { 50: '#f0fdf4', 100: '#dcfce7', 200: '#bbf7d0', 300: '#86efac', 400: '#4ade80', 500: '#22c55e', 600: '#16a34a', 700: '#15803d' },
+            trust: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 500: '#3b82f6', 600: '#2563eb' }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Noto Sans KR', sans-serif; }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+  <!-- 네비 -->
+  <nav class="sticky top-0 z-50 bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 flex items-center justify-between h-14 md:h-16">
+      <a href="index.html" class="text-lg font-bold text-primary-600">행복나눔 푸드뱅크</a>
+      <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-600">
+        <li><a href="index.html#donate" class="hover:text-primary-600">기부안내</a></li>
+        <li><a href="index.html#transparency" class="hover:text-primary-600">투명성</a></li>
+        <li><a href="index.html#participate" class="hover:text-primary-600">참여하기</a></li>
+        <li><a href="about.html">소개</a></li>
+        <li><a href="volunteer.html">자원봉사</a></li>
+        <li><a href="beneficiary.html">수혜안내</a></li>
+        <li><a href="news.html">알림마당</a></li>
+      </ul>
+      <button id="nav-toggle" type="button" class="md:hidden p-2" aria-label="메뉴">☰</button>
+    </div>
+    <div id="nav-mobile" class="hidden md:hidden bg-white border-t px-4 py-4">
+      <a href="index.html#donate" class="block py-2">기부안내</a>
+      <a href="index.html#transparency" class="block py-2">투명성</a>
+      <a href="index.html#participate" class="block py-2">참여하기</a>
+      <a href="about.html" class="block py-2">소개</a>
+      <a href="volunteer.html" class="block py-2">자원봉사</a>
+      <a href="beneficiary.html" class="block py-2">수혜안내</a>
+      <a href="news.html" class="block py-2">알림마당</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- 1. 히어로: 슬로건 + 실시간 통계 3개 + CTA -->
+    <section class="relative py-16 md:py-24 bg-gradient-to-br from-primary-600 to-trust-600 text-white">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">나눔으로 만드는 따뜻한 세상</h1>
+        <p class="text-lg text-white/90 mb-12">기업과 개인의 기부로 어려운 이웃에게 식품을 전달합니다.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto mb-12">
+          <div class="bg-white/15 backdrop-blur rounded-xl p-6">
+            <p class="text-3xl md:text-4xl font-bold" data-count="15">0</p>
+            <p class="text-sm text-white/90">톤 (올해 기부량)</p>
+          </div>
+          <div class="bg-white/15 backdrop-blur rounded-xl p-6">
+            <p class="text-3xl md:text-4xl font-bold" data-count="500">0</p>
+            <p class="text-sm text-white/90">가구 (수혜)</p>
+          </div>
+          <div class="bg-white/15 backdrop-blur rounded-xl p-6">
+            <p class="text-3xl md:text-4xl font-bold" data-count="30">0</p>
+            <p class="text-sm text-white/90">참여 기업</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <button type="button" data-modal="donate" class="px-6 py-3 rounded-lg bg-white text-primary-600 font-semibold hover:bg-primary-50">기부하기</button>
+          <a href="volunteer.html" class="px-6 py-3 rounded-lg border-2 border-white hover:bg-white/20">자원봉사 신청</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 기부 안내: 탭 (기업/개인/물품/금전) -->
+    <section id="donate" class="py-16 md:py-24 px-4 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">기부 안내</h2>
+        <div class="flex flex-wrap border-b border-gray-200 mb-8">
+          <button type="button" data-tab="corporate" class="donate-tab px-6 py-3 font-medium text-primary-600 border-b-2 border-primary-600">기업 기부</button>
+          <button type="button" data-tab="individual" class="donate-tab px-6 py-3 font-medium text-gray-500 hover:text-primary-600">개인 기부</button>
+          <button type="button" data-tab="goods" class="donate-tab px-6 py-3 font-medium text-gray-500 hover:text-primary-600">물품 기부</button>
+          <button type="button" data-tab="money" class="donate-tab px-6 py-3 font-medium text-gray-500 hover:text-primary-600">금전 기부</button>
+        </div>
+        <div id="tab-corporate" class="donate-panel">
+          <p class="text-gray-600 mb-4">기업에서 유통기한 내 식품, 생필품을 기부하시면 소득세 법인세 감면 등 혜택을 받으실 수 있습니다.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>기부금 세액 공제 (법인 10% 한도)</li>
+            <li>홍보 자료·연간보고서에 후원사 표기</li>
+          </ul>
+          <button type="button" data-modal="donate" class="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700">기업 기부 신청</button>
+        </div>
+        <div id="tab-individual" class="donate-panel hidden">
+          <p class="text-gray-600 mb-4">개인도 소량의 식품·금전 기부로 참여할 수 있습니다. 마음만 있으면 누구나 기부자가 됩니다.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>기부금 세액 공제 (연 30% 한도)</li>
+            <li>정기 후원자 소식지 발송</li>
+          </ul>
+          <button type="button" data-modal="donate" class="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700">개인 기부 신청</button>
+        </div>
+        <div id="tab-goods" class="donate-panel hidden">
+          <p class="text-gray-600 mb-4">유통기한 1개월 이상 남은 식품, 생필품을 기부해 주세요. 수거 가능 지역은 문의해 주세요.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>캔, 통조림, 밀가루, 유제품 등</li>
+            <li>대량 기부 시 수거 협의</li>
+          </ul>
+          <button type="button" data-modal="donate" class="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700">물품 기부 신청</button>
+        </div>
+        <div id="tab-money" class="donate-panel hidden">
+          <p class="text-gray-600 mb-4">금전 기부는 가장 유연하게 사용 가능합니다. 정기 후원도 가능합니다.</p>
+          <ul class="list-disc list-inside text-gray-600 mb-6">
+            <li>일시 후원 / 정기 후원</li>
+            <li>기부금 영수증 발급 (세액 공제)</li>
+          </ul>
+          <button type="button" data-modal="donate" class="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700">금전 기부 신청</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 투명성: 차트, 배분 현황, 재정 보고서 -->
+    <section id="transparency" class="py-16 md:py-24 px-4 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">투명하게 공개합니다</h2>
+        <p class="text-center text-gray-600 mb-10">모든 기부와 배분 내역을 투명하게 공개합니다.</p>
+        <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+          <h3 class="font-semibold text-gray-800 mb-4">이번 달 기부 현황 (월별 추이)</h3>
+          <div class="h-64">
+            <canvas id="chart-monthly"></canvas>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-white rounded-xl shadow-sm p-6">
+            <h3 class="font-semibold text-gray-800 mb-4">이번 달 배분 현황</h3>
+            <p class="text-gray-600">배분 가구: <strong>42가구</strong></p>
+            <p class="text-gray-600">배분 식품: <strong>약 1.2톤</strong></p>
+          </div>
+          <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col justify-center">
+            <a href="#" class="inline-flex items-center px-6 py-3 rounded-lg bg-trust-500 text-white font-semibold hover:bg-trust-600 w-fit">재정 보고서 다운로드 (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 후원 감사: 기업 로고 월 -->
+    <section class="py-16 md:py-24 px-4 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">함께하는 기업</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <button type="button" class="sponsor-logo flex items-center justify-center h-24 rounded-xl bg-gray-100 hover:bg-primary-50 border border-gray-200" data-name="삼성" data-detail="2024년 정기 식품 기부">삼성</button>
+          <button type="button" class="sponsor-logo flex items-center justify-center h-24 rounded-xl bg-gray-100 hover:bg-primary-50 border border-gray-200" data-name="LG" data-detail="생활용품·식품 기부">LG</button>
+          <button type="button" class="sponsor-logo flex items-center justify-center h-24 rounded-xl bg-gray-100 hover:bg-primary-50 border border-gray-200" data-name="롯데" data-detail="식품 기부 및 물류 지원">롯데</button>
+          <button type="button" class="sponsor-logo flex items-center justify-center h-24 rounded-xl bg-gray-100 hover:bg-primary-50 border border-gray-200" data-name="CJ" data-detail="식품 기부">CJ</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. 활동 갤러리 + 카테고리 필터 -->
+    <section class="py-16 md:py-24 px-4 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">활동 갤러리</h2>
+        <div class="flex flex-wrap gap-2 justify-center mb-8">
+          <button type="button" class="gallery-filter px-4 py-2 rounded-full bg-primary-600 text-white text-sm font-medium">전체</button>
+          <button type="button" class="gallery-filter px-4 py-2 rounded-full bg-gray-200 text-gray-600 text-sm">배분</button>
+          <button type="button" class="gallery-filter px-4 py-2 rounded-full bg-gray-200 text-gray-600 text-sm">봉사</button>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="gallery-item rounded-xl overflow-hidden shadow aspect-square bg-gray-200" data-cat="배분">
+            <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&q=80" alt="배분 활동" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-item rounded-xl overflow-hidden shadow aspect-square bg-gray-200" data-cat="봉사">
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&q=80" alt="봉사" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-item rounded-xl overflow-hidden shadow aspect-square bg-gray-200" data-cat="배분">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80" alt="배분" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-item rounded-xl overflow-hidden shadow aspect-square bg-gray-200" data-cat="봉사">
+            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&q=80" alt="봉사" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-item rounded-xl overflow-hidden shadow aspect-square bg-gray-200" data-cat="배분">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&q=80" alt="배분" class="w-full h-full object-cover">
+          </div>
+          <div class="gallery-item rounded-xl overflow-hidden shadow aspect-square bg-gray-200" data-cat="봉사">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80" alt="봉사" class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. 참여 방법: 3카드 -->
+    <section id="participate" class="py-16 md:py-24 px-4 bg-white">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">참여 방법</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <article class="rounded-2xl p-8 border-2 border-primary-200 bg-primary-50/50 text-center hover:shadow-lg transition">
+            <span class="text-4xl mb-4 block">🎁</span>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">기부하기</h3>
+            <p class="text-gray-600 text-sm mb-6">식품·금전 기부로 나눔에 동참해 주세요.</p>
+            <button type="button" data-modal="donate" class="px-6 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700">기부 신청</button>
+          </article>
+          <article class="rounded-2xl p-8 border-2 border-gray-200 text-center hover:shadow-lg transition">
+            <span class="text-4xl mb-4 block">🤝</span>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">봉사하기</h3>
+            <p class="text-gray-600 text-sm mb-6">배분·정리·행사 봉사에 참여해 주세요.</p>
+            <a href="volunteer.html" class="inline-block px-6 py-3 rounded-lg bg-trust-500 text-white font-semibold hover:bg-trust-600">봉사 신청</a>
+          </article>
+          <article class="rounded-2xl p-8 border-2 border-gray-200 text-center hover:shadow-lg transition">
+            <span class="text-4xl mb-4 block">❤️</span>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">도움받기</h3>
+            <p class="text-gray-600 text-sm mb-6">수혜가 필요하시면 신청 방법을 안내합니다.</p>
+            <a href="beneficiary.html" class="inline-block px-6 py-3 rounded-lg bg-gray-700 text-white font-semibold hover:bg-gray-800">수혜 안내</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. 공지사항/소식 -->
+    <section class="py-16 md:py-24 px-4 bg-gray-50">
+      <div class="max-w-5xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">알림마당</h2>
+        <ul class="space-y-4">
+          <li><a href="news.html#n1" class="block p-4 bg-white rounded-xl shadow-sm hover:shadow-md">[공지] 2024년 상반기 기부 현황 공개</a></li>
+          <li><a href="news.html#n2" class="block p-4 bg-white rounded-xl shadow-sm hover:shadow-md">[소식] OO기업 1톤 식품 기부</a></li>
+          <li><a href="news.html#n3" class="block p-4 bg-white rounded-xl shadow-sm hover:shadow-md">[보도] 지역 푸드뱅크 활성화 방안</a></li>
+          <li><a href="news.html#n4" class="block p-4 bg-white rounded-xl shadow-sm hover:shadow-md">[공지] 12월 배분 일정 안내</a></li>
+        </ul>
+        <div class="text-center mt-8">
+          <a href="news.html" class="inline-block px-6 py-3 rounded-lg border-2 border-primary-600 text-primary-600 font-semibold hover:bg-primary-50">더보기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 8. 푸터 -->
+  <footer class="bg-gray-800 text-gray-300 py-12 px-4">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid md:grid-cols-3 gap-8 mb-8">
+        <div>
+          <p class="font-bold text-white mb-2">행복나눔 푸드뱅크</p>
+          <p class="text-sm">주소: 서울 OO구 OO로 123</p>
+          <p class="text-sm">전화: 02-1234-5678</p>
+          <p class="text-sm">이메일: contact@foodbank.kr</p>
+        </div>
+        <div>
+          <p class="font-bold text-white mb-2">SNS</p>
+          <a href="#" class="block text-sm hover:text-primary-400">페이스북</a>
+          <a href="#" class="block text-sm hover:text-primary-400">인스타그램</a>
+        </div>
+        <div>
+          <p class="text-sm">사업자등록번호: 000-00-00000</p>
+          <p class="text-sm mt-2"><a href="#" class="hover:text-primary-400">개인정보처리방침</a></p>
+        </div>
+      </div>
+      <p class="text-center text-sm text-gray-500">© 행복나눔 푸드뱅크. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 기부 신청 모달 -->
+  <div id="modal-donate" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 p-4" aria-hidden="true">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl">
+      <h3 class="text-xl font-bold text-gray-800 mb-4">기부 신청</h3>
+      <form id="form-donate" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">기업명 / 성함 *</label>
+          <input type="text" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">연락처 *</label>
+          <input type="tel" name="phone" required class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">기부 종류</label>
+          <select name="type" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+            <option value="corporate">기업 기부</option>
+            <option value="individual">개인 기부</option>
+            <option value="goods">물품 기부</option>
+            <option value="money">금전 기부</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">기부 수량/내용</label>
+          <input type="text" name="detail" placeholder="예: 식품 100kg, 10만원" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+        <div>
+          <label class="flex items-center gap-2">
+            <input type="checkbox" name="agree" required>
+            <span class="text-sm text-gray-600">개인정보 수집·이용에 동의합니다.</span>
+          </label>
+        </div>
+        <div class="flex gap-2">
+          <button type="submit" class="flex-1 py-3 rounded-lg bg-primary-600 text-white font-semibold hover:bg-primary-700">신청하기</button>
+          <button type="button" class="modal-close px-4 py-3 rounded-lg border border-gray-300">취소</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 후원 기업 상세 팝업 -->
+  <div id="modal-sponsor" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/50 p-4" aria-hidden="true">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl">
+      <h3 id="sponsor-name" class="text-xl font-bold text-gray-800 mb-2"></h3>
+      <p id="sponsor-detail" class="text-gray-600 text-sm mb-4"></p>
+      <button type="button" class="modal-close w-full py-3 rounded-lg border border-gray-300">닫기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
